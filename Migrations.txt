@@ -1,0 +1,11 @@
+Create a migration:
+
+dotnet ef migrations add Initial -p Timeline.Data -s Timeline.Api -v
+
+Apply a migration:
+
+This should work from the Timeline.Data folder, but doesn't:
+
+dotnet ef database update -v
+
+Running Update-Database from Package Manager Console having set the folder to Timeline.Data does work.

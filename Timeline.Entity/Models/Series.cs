@@ -9,7 +9,7 @@ namespace Timeline.Entity.Models
         public string Description { get; set; }
 
         public virtual World World { get; set; }
-        public virtual Timeline Timeline { get; set; }
-        public virtual ICollection<Book> Books { get; set; }
+        //public virtual Timeline Timeline { get; set; }
+        //public virtual ICollection<Book> Books { get; set; }
     }
 }
