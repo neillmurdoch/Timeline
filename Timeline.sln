@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timeline.Service", "Timeline.Service\Timeline.Service.csproj", "{F626E0AD-90F7-4975-A5B1-76222F2002D1}"
 EndProject
@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timeline.Data", "Timeline.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timeline.WebAppExample", "Timeline.WebAppExample\Timeline.WebAppExample.csproj", "{7ED67E83-F3CE-4075-A010-D2A68308103D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timeline.Entity", "Timeline.Entity\Timeline.Entity.csproj", "{DE248AF3-C32E-4859-B8ED-BBD4FB0175F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timeline.Entity", "Timeline.Entity\Timeline.Entity.csproj", "{DE248AF3-C32E-4859-B8ED-BBD4FB0175F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timeline.Core", "Timeline.Core\Timeline.Core.csproj", "{003F42FA-0A43-40A5-985B-D6FEC22F46D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timeline.Core", "Timeline.Core\Timeline.Core.csproj", "{003F42FA-0A43-40A5-985B-D6FEC22F46D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeLine.Common", "TimeLine.Common\TimeLine.Common.csproj", "{8786F524-4B98-49E3-BD6F-D65792AB86C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{003F42FA-0A43-40A5-985B-D6FEC22F46D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{003F42FA-0A43-40A5-985B-D6FEC22F46D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{003F42FA-0A43-40A5-985B-D6FEC22F46D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8786F524-4B98-49E3-BD6F-D65792AB86C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8786F524-4B98-49E3-BD6F-D65792AB86C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8786F524-4B98-49E3-BD6F-D65792AB86C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8786F524-4B98-49E3-BD6F-D65792AB86C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
