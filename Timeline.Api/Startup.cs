@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Timeline.Data;
+using Timeline.Service;
+using Timeline.Service.Services;
 
 namespace Timeline.Api
 {
@@ -24,11 +26,18 @@ namespace Timeline.Api
             var connectionString = Configuration.GetConnectionString(nameof(TimelineDbContext));
             services.AddDbContext<TimelineDbContext>(options => options.UseSqlServer(connectionString));
 
+            ConfigureIoc(services);
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Timeline.Api", Version = "v1" });
             });
+        }
+
+        private void ConfigureIoc(IServiceCollection services)
+        {
+            services.AddScoped<ISeriesService, SeriesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

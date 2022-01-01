@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using TimeLine.Common.Dtos;
 
 namespace Timeline.Service
 {
-    internal class ISeriesService
+    public interface ISeriesService
     {
+        IEnumerable<SeriesDto> GetAll();
+        SeriesDto GetSeries(int id);
     }
 }
