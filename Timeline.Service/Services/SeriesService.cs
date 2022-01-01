@@ -17,7 +17,7 @@ namespace Timeline.Service.Services
 
         public async Task<IEnumerable<SeriesDto>> GetAllAsync()
         {
-            var seriesEntities = await _timelineDbContext.Series.Include(entity => entity.World).ToListAsync();
+            var seriesEntities = await _timelineDbContext.Series.Include(s => s.World).ToListAsync();
 
             var seriesDtos = new List<SeriesDto>();
             foreach (var seriesEntity in seriesEntities)
@@ -42,7 +42,7 @@ namespace Timeline.Service.Services
 
         public async Task<SeriesDto> GetSeriesAsync(int id)
         {
-            var seriesEntity = await _timelineDbContext.FindAsync<SeriesDto>(id);
+            var seriesEntity = await _timelineDbContext.Series.Include(s => s.World).FirstOrDefaultAsync(s => s.Id == id);
 
             var seriesDto = new SeriesDto
             {

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Timeline.Service;
-using TimeLine.Common.Dtos;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,18 +19,18 @@ namespace Timeline.Api.Controllers
 
         // GET: api/<SeriesController>
         [HttpGet]
-        public async Task<IEnumerable<SeriesDto>> Get()
+        public async Task<ActionResult> Get()
         {
             var allSeries = await _seriesService.GetAllAsync();
-            return allSeries;
+            return Ok(allSeries);
         }
 
         // GET api/<SeriesController>/5
         [HttpGet("{id:int}")]
-        public async Task<SeriesDto> Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
             var series = await _seriesService.GetSeriesAsync(id);
-            return series;
+            return Ok(series);
         }
 
         // POST api/<SeriesController>
