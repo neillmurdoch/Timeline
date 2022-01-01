@@ -38,8 +38,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+//var connectionString = builder.Configuration.GetSection("ConnectionStrings:TimelineDbContext").Value;
 var connectionString = builder.Configuration.GetValue<string>("ConnectionStrings:TimelineDbContext");
-var connectionStrings = builder.Configuration.GetSection("ConnectionStrings:TimelineDbContext").Value;
 builder.Services.AddDbContext<TimelineDbContext>(options => options.UseSqlServer(connectionString));
 
 ConfigureIoc(builder.Services);

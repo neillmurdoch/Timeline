@@ -1,19 +1,63 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Timeline.Data;
 using TimeLine.Common.Dtos;
 
 namespace Timeline.Service.Services
 {
     public class SeriesService : ISeriesService
     {
-        public IEnumerable<SeriesDto> GetAll()
+        private readonly TimelineDbContext _timelineDbContext;
+
+        public SeriesService(TimelineDbContext timelineDbContext)
         {
-            throw new NotImplementedException();
+            _timelineDbContext = timelineDbContext;
         }
 
-        public SeriesDto GetSeries(int id)
+        public async Task<IEnumerable<SeriesDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var seriesEntities = await _timelineDbContext.Series.Include(entity => entity.World).ToListAsync();
+
+            var seriesDtos = new List<SeriesDto>();
+            foreach (var seriesEntity in seriesEntities)
+            {
+                var seriesDto = new SeriesDto
+                {
+                    Id = seriesEntity.Id,
+                    Name = seriesEntity.Name,
+                    Description = seriesEntity.Description,
+                    World = new WorldDto
+                    {
+                        Id = seriesEntity.World.Id,
+                        Name = seriesEntity.World.Name,
+                        Description = seriesEntity.World.Description
+                    }
+                };
+                seriesDtos.Add(seriesDto);
+            }
+
+            return seriesDtos;
+        }
+
+        public async Task<SeriesDto> GetSeriesAsync(int id)
+        {
+            var seriesEntity = await _timelineDbContext.FindAsync<SeriesDto>(id);
+
+            var seriesDto = new SeriesDto
+            {
+                Id = seriesEntity.Id,
+                Name = seriesEntity.Name,
+                Description = seriesEntity.Description,
+                World = new WorldDto
+                {
+                    Id = seriesEntity.World.Id,
+                    Name = seriesEntity.World.Name,
+                    Description = seriesEntity.World.Description
+                }
+            };
+
+            return seriesDto;
         }
     }
 }

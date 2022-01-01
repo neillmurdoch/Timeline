@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using TimeLine.Common.Dtos;
 
 namespace Timeline.Service
 {
     public interface ISeriesService
     {
-        IEnumerable<SeriesDto> GetAll();
-        SeriesDto GetSeries(int id);
+        Task<IEnumerable<SeriesDto>> GetAllAsync();
+        Task<SeriesDto> GetSeriesAsync(int id);
     }
 }
