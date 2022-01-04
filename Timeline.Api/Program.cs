@@ -25,6 +25,7 @@
 //    }
 //}
 
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +33,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Timeline.Data;
 using Timeline.Service;
+using Timeline.Service.Mappings;
 using Timeline.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -43,6 +45,15 @@ var connectionString = builder.Configuration.GetValue<string>("ConnectionStrings
 builder.Services.AddDbContext<TimelineDbContext>(options => options.UseSqlServer(connectionString));
 
 ConfigureIoc(builder.Services);
+
+// Auto mapper configuration.
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new EntityDtoMappingProfile());
+});
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

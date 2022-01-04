@@ -2,7 +2,7 @@
 
 namespace Timeline.Entity.Models
 {
-    public class Series
+    public class Series : Entity
     {
         public int Id { get; set; }
         public string Name { get; set; }

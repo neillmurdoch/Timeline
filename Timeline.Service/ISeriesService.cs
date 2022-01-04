@@ -6,7 +6,9 @@ namespace Timeline.Service
 {
     public interface ISeriesService
     {
-        Task<IEnumerable<SeriesDto>> GetAllAsync();
-        Task<SeriesDto> GetSeriesAsync(int id);
+        Task<IEnumerable<SeriesDto>> RetrieveAllAsync();
+        Task<SeriesDto> RetrieveSeriesAsync(int id);
+        Task<SeriesDto> CreateAsync(SeriesDto seriesDto);
+        Task<SeriesDto> UpdateAsync(int id, SeriesDto seriesDto);
     }
 }
