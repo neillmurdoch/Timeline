@@ -6,31 +6,23 @@ To create a mapping profile:
       {
           public EntityDtoMappingProfile()
           {
-              var entities = Assembly.GetAssembly(typeof(Series))
-                  ?.GetTypes()
-                  .Where(myType =>
-                      myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(<Something here>Entity)));
+              var allEntities = Assembly.GetAssembly(typeof(Series))?.GetTypes()
+                  .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(<Something here>Entity)));
 
-              var dtos = Assembly.GetAssembly(typeof(Dto))
-                  ?.GetTypes()
+              var dtos = Assembly.GetAssembly(typeof(Dto))?.GetTypes()
                   .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Dto))).ToArray();
 
-              //var mapperConfigurationExpression = new MapperConfigurationExpression();
-
-              const string dtoSuffix = "Dto";
-              foreach (var entity in entities)
+              const string dtoAppend = "Dto";
+              foreach (var entity in allEntities)
               {
-                  var dtoName = $"{entity.Name}{dtoSuffix}";
+                  var dtoName = $"{entity.Name}{dtoAppend}";
                   var dto = dtos.FirstOrDefault(o => o.Name.Equals(dtoName));
                   if (dto != null)
                   {
                       CreateMap(entity, dto).ReverseMap();
-                      //mapperConfigurationExpression.CreateMap(entity, dto).ReverseMap();
                   }
               }
-              //var configuration = new MapperConfiguration(mapperConfigurationExpression);
           }
-
       }
   }
   
